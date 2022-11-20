@@ -31,13 +31,68 @@ var createScene = function () {
     // Default intensity is 1. Let's dim the light a small amount
     light.intensity = 0.7;
 
-    var newsphere = createSphere(0, 1, 0, 2);
-    newsphere.material = hexMat('#ff0000');
+    
+    
+
+    var newbox1 = createBox(0, 1, 0, 1.5, 2,2);
+    newbox1.material = hexMat('#88898f');
+     
+    var newbox2 = createBox(0, 2, 0, 1, 1,1)
+    newbox2.material = fileMat('deadface.png');
+
+    var newbox3 = createBox(1, 1.5, -1, 0.5, 1,0.5)
+    newbox3.material = hexMat('#88898f');
+     
+    var newbox4 = createBox(-1, 1.5, -1, 0.5, 1,0.5)
+    newbox4.material = hexMat('#88898f');
+
+    var newbox5 = createBox(0.5, 0, -1, 0.5, 0.5,1)
+    newbox5.material = hexMat('#88898f');
+    
+    var newbox6 = createBox(-0.5, 0, -1, 0.5, 0.5,1)
+    newbox6.material = hexMat('#88898f');
+
+    var boxx = new meshModel('haunted_house.glb', 6, -5, 1, 0)
+    var heart1 = new meshModel('emoji_heart.glb', 2, 2, 4, -4)
+    var heart2 = new meshModel('emoji_heart.glb', 2, 3, 4, -4)
+    var heart3 = new meshModel('emoji_heart.glb', 2, 4, 4, -4)
+    var heart4 = new meshModel('emoji_heart.glb', 2, 2.5, 3.5, -4)
+    var heart5 = new meshModel('emoji_heart.glb', 2, 3.5, 3.5, -4)
+    var heart6 = new meshModel('emoji_heart.glb', 2, 3, 3, -4)
+    var heart7 = new meshModel('emoji_heart.glb', 2, 2.5, 4.5, -4)
+    var heart8 = new meshModel('emoji_heart.glb', 2, 3.5, 4.5, -4)
+
+
+    var anim1 = {subj : newbox1.position, prop: 'y', val : 5};
+    var anim2 = {subj : newbox1.material, prop: 'alpha', val : 0};
+
+    var anim3 = {subj : newbox2.position, prop: 'y', val : 5};
+    var anim4 = {subj : newbox2.material, prop: 'alpha', val : 0};
+
+
+    var anim5 = {subj : newbox3.position, prop: 'y', val : 5};
+    var anim6 = {subj : newbox3.material, prop: 'alpha', val : 0};
+
+    var anim7 = {subj : newbox4.position, prop: 'y', val : 5};
+    var anim8 = {subj : newbox4.material, prop: 'alpha', val : 0};
+
+    var anim9 = {subj : newbox5.position, prop: 'y', val : 5};
+    var anim10 = {subj : newbox5.material, prop: 'alpha', val : 0};
+
+    var anim11 = {subj : newbox6.position, prop: 'y', val : 5};
+    var anim12 = {subj : newbox6.material, prop: 'alpha', val : 0};
+
+    var anim = [anim1, anim2, anim3, anim4, anim5, anim6, anim7, anim8, anim9, anim10, anim11, anim12]
+
+
+    animate(anim, scene, 10);
+
 
     // Our built-in 'ground' shape.
-    var ground = BABYLON.MeshBuilder.CreateGround("ground", {width: 6, height: 6}, scene);
+    var ground = BABYLON.MeshBuilder.CreateGround("ground", {width: 20, height: 10}, scene);
+    ground.material = hexMat('#6C6A61')
 
-    return scene;
+     return scene;
 };
 window.initFunction = async function () {
     var asyncEngineCreation = async function () {
